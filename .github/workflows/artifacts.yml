@@ -1,0 +1,21 @@
+name: Artifacts upload pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request: # This triggers the pipeline on any pull request change
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create application file
+        run: echo "This is the testing code" > app.js
+
+      - name: Upload the artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: application-artifact
+          path: app.js
