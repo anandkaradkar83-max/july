@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Notification via curl request
         run: |
-          curl -X POST \
+          curl -f -X POST \
             -H "Content-Type: application/json" \
             -d '{"text":"Hello from GitHub Actions! From Anand Karadkar 🚀"}' \
             "${{ secrets.WEBHOOK }}"
