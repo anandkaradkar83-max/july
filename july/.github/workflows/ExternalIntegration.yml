@@ -1,0 +1,18 @@
+name: External Integration
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  external-notification:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notification via curl request
+        run: |
+          curl -f -X POST \
+            -H "Content-Type: application/json" \
+            -d '{"text":"Hello from GitHub Actions! From Anand Karadkar 🚀"}' \
+            "${{ secrets.WEBHOOK }}"
